@@ -31,7 +31,10 @@ public class MailService {
                 "<p style='font-size:27px;font-weight:600;color:#333333;margin:0;line-height:2em'>Reservation Confirmation</p>" +
                 "<p style='font-size:16px;font-weight:400;color:#333333;margin:0;line-height:2em'>" +
                 mailDto.getMessage() +
-                "</p></td></tr></tbody></table>";
+                "</p></td></tr><tr width='720' style='border:0;padding:0;margin:0 auto;text-align:center'>" +
+                "<td style='padding:0;margin:0;text-align:center;width:100%'>" +
+                "<a href='https://naver.com'><button type='button'>네이버로이동</button></a>" +
+                "</td></tr></tbody></table>";
         mailHandler.setText(stringHtml,true);
 
         mailHandler.send();
