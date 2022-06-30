@@ -31,7 +31,11 @@ public class Url {
     @NotBlank
     private String url;
 
+    private SessionObject loginInfo;
+
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime createdAt;
+
+
 }
