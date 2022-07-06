@@ -10,4 +10,5 @@ import lombok.Setter;
 public class Param {
     private String url;
     private SessionObject loginInfo;
+    private String cookie;
 }

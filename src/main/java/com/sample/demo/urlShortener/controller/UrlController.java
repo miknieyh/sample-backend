@@ -19,17 +19,14 @@ public class UrlController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity shortenUrl(@RequestBody Param param) {
-        String url = param.getUrl();
-        SessionObject loginInfo = param.getLoginInfo();
-        Url shortUrlEntry = urlManager.shortenUrl(url,loginInfo);
+    public ResponseEntity shortenUrl(@RequestBody String url) {
+        Url shortUrlEntry = urlManager.shortenUrl(url);
         return ResponseEntity.ok(shortUrlEntry);
     }
 
     @RequestMapping(value = "/{key}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity getUrl(@PathVariable String key) {
-        Url url = urlManager.getUrlByKey(key);
-        return ResponseEntity.ok(url.getUrl());
+    public Url getUrl(@PathVariable String key) {
+        return urlManager.getUrlByKey(key);
     }
 }

@@ -32,11 +32,11 @@ public class UrlManagerImpl implements UrlManager {
 
 
     @Override
-    public Url shortenUrl(@NotBlank String url, SessionObject loginInfo) {
+    public Url shortenUrl(@NotBlank String url) {
         // generating murmur3 based hash key as short URL
         String key = Hashing.murmur3_32().hashString(url, Charset.defaultCharset()).toString();
 
-        Url shortUrlEntry = Url.builder().key(key).loginInfo(loginInfo).createdAt(LocalDateTime.now()).url(url).build();
+        Url shortUrlEntry = Url.builder().key(key).createdAt(LocalDateTime.now()).url(url).build();
 
         //레디스에 저장
         redisTemplate.opsForValue().set(key, shortUrlEntry, 36000L, TimeUnit.SECONDS);
